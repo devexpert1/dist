@@ -1,0 +1,124 @@
+
+/* You can add global styles to this file, and also import other style files */
+@import url(https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic);
+body,h1,h2,h3,h4,h5,h6,p,a,ul,pre,blockquote{
+    font-family: 'Lato', sans-serif;
+}
+.form-control {
+    box-shadow: none !important;
+    height: 50px;
+    border: 1px solid #e0e0e0;
+}
+
+.form-control:focus {
+    border-color: #2ed078;
+}
+
+.contact-border {
+    width: 60px;
+    height: 3px;
+    margin: 20px 0px;
+}
+
+textarea.form-control {
+    height: auto;
+}
+.account_form_bg {
+    background-color: #fff;
+    padding: 20px 30px 25px;
+    border-radius: 5px;
+}
+
+.account_form_bg .form-control{
+    background-color: #fff;
+    border-color: #000;
+    /*border:2px solid #e9edf5;*/
+    border:2px solid #e9edf5;
+}
+.account_img {
+    background-size: cover;
+    background-position: center center;
+    background-color: #dde3ef;
+    position: relative;
+    box-shadow: -15px 20px 26px 0px rgba(0, 0, 0, 0.38);
+}
+button.btn.btn-custom.w-100.btn-rounded {
+    background: #2ba9e3;
+    border-color: #2ba9e3;
+}
+.btn-custom {
+    background-color: #2ed078;
+    border: 2px solid #2ed078;
+    color: #fff;
+    transition: all 0.5s;
+    font-size: 15px;
+    text-transform: capitalize;
+}
+.btn-rounded {
+    border-radius: 30px;
+}
+.btn {
+    padding: 10px 22px;
+}
+.p-4 {
+    padding: 2px!important;
+    border-radius: 5px;
+}
+button.btn.btn-custom.w-100.btn-rounded {
+    background: #2ba9e3;
+    border-color: #2ba9e3;
+}
+button.btn.btn-custom.btn-facebook {
+    background: #eef1ff;
+    border-color: #fff;    margin-top: -15px;
+    color: #2ba9e3;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    padding: 0;
+    font-size: 17px;
+}
+button.btn.btn-custom.btn-google {
+    background: #eef1ff;    margin-top: -15px;
+    border-color: #fff;
+    color: #2ba9e3;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    padding: 0;
+    font-size: 17px;
+}hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid #495057;
+}
+.account_bg_color {
+    background-color: #edf3ff;
+    height: 100%;
+    padding: 52px 0px;
+}
+.text-black{color:#000;}
+
+.padding-60{padding-top: 60px;
+    padding-bottom: 60px;}
+	.text-muted {
+    font-weight: 400;
+}
+.home-table-center a:hover {
+    color: #000;
+}
+.social-signup {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: -35px;
+    background: #fff;
+    margin-top: -26px;
+    display: inline-block;
+    transform: translateY(-30px);
+    padding: 5px 15px;
+}
