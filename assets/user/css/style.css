@@ -1020,6 +1020,7 @@ main.px-30{
     float: left;
     width: 37px;
     height: 37px;
+	object-fit:cover; 
     border:1px solid #ddd;
 }
 
@@ -7549,7 +7550,7 @@ section.tripmain-sec {
  .tour_head h2 {
      color: #213d44;
     /* text-transform: uppercase;
-     */
+     */text-transform: capitalize;
      font-weight: 600;
      margin-top: 0px;
      font-size: 36px;
@@ -8490,7 +8491,7 @@ section.tripmain-sec {
      position: relative;
      overflow: hidden;
      border: 1px solid #dedede;
-     padding: 25px 25px 0px 25px;
+     padding: 25px 25px 20px 25px;
      background: #ffffff;
      margin-top: 50px;
 }
@@ -8508,8 +8509,14 @@ section.tripmain-sec {
  .dir-rat h3 {
      font-size: 18px;
 }
+ .dir-rat h3.head-comment
+{
+	font-weight:700;
+	margin-bottom:20px;
+}
  .dir-rat-form {
      position: relative;
+	 margin-top: 15px;
      overflow: hidden;
      margin-bottom: 35px;
 }
@@ -8517,6 +8524,10 @@ section.tripmain-sec {
      margin-bottom: 10px;
      margin-top: 5px;
      color: #213d44;
+}
+.form-control
+{
+	box-shadow:none;
 }
 /****** Style Star Rating Widget *****/
  .rating {
@@ -8577,7 +8588,11 @@ section.tripmain-sec {
      font-weight: 400;
      color: #888;
 }
- .dir-rat-right {
+.dir-rat-inn.dir-rat-review.review-comment  .dir-rat-left img {
+    width: 60px;
+	margin-bottom: 10px;
+    height: 60px;
+    object-fit: cover;
 }
  .dir-rat-right p {
      margin-bottom: 0px;
@@ -8604,7 +8619,7 @@ section.tripmain-sec {
  .dir-rat-star i {
      font-size: 16px;
      color: #FF9800;
-     margin-right: 2px;
+     margin-right: 2px!important;
 }
  .dir-rat-right ul li span {
      padding-right: 7px;
@@ -8621,7 +8636,7 @@ section.tripmain-sec {
      margin-top: 0px;
      color: #213d44;
      background-size: 25px;
-     text-transform: uppercase;
+     text-transform: Capitalize;
      font-weight: 600;
      font-size: 18px;
 }
@@ -10943,6 +10958,9 @@ ul.like-com.likescomnts.pull-right li{
     .tour_incl ul li{
         font-size: 14px;
     }
+	li.l-info-pack-plac .trips-owl {
+    height: auto;
+}
 }
 
 
@@ -11354,3 +11372,38 @@ span.tag-tas, span.tag-categ  {    z-index: 11; }
     border: dotted 3px #2ba9e3 !important;
 }
 .br-default .br-units{align-items:center}.br-default .br-unit{margin-right:5px;font-size:23px;height:18px;width:18px}.br-default .br-unit:after{content:"\2605";color:#d2d2d2}.br-default .br-selected:after{color:#EDB867}.br-default .br-active:after{color:#EDB867}
+.spinner-three-bounce
+{
+	    position: fixed!important; 
+}.main-left-sidebar.mr-pro .user_profile img.my_profile_pic {
+    border-radius: 50%;
+}
+li.l-info-pack-plac .trips-owl.trips-detail-owl {
+    height: 300px;
+    margin-bottom: 20px;
+}
+.main-left-sidebar.mr-pro.friends-side {
+    margin-top: 0px;
+}
+.main-left-sidebar.mr-pro.friends-side .user-pro-img{
+   background:transparent;
+}
+.main-left-sidebar.mr-pro.friends-side .user-pro-img img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    padding: 0;
+}
+.main-left-sidebar.mr-pro.friends-side  .star-line
+{
+	justify-content: center;
+    font-size: 14px;
+    margin-top: 5px;
+}
+@media only screen and (max-width: 767px)
+{
+.user-pro-img img {
+    max-width: initial;
+}
+}
