@@ -1,0 +1,245 @@
+<div class="container-scroller">
+  <app-header></app-header>
+  <!-- partial -->
+  <div class="container-fluid page-body-wrapper">
+    <!-- partial:partials/_sidebar.html -->
+    <app-sidebar></app-sidebar>
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="row mb-4">
+          <div class="col-12 d-flex align-items-center justify-content-between">
+            <h4 class="page-title">Profile</h4>
+          </div>
+        </div>
+        <div class="row profile-page">
+          <div class="col-4">
+            <div class="card">
+              <div class="card-body p-0">
+                <div class="profile-header text-white d-none d-md-block">
+                  <div class="d-flex justify-content-around">
+                    <div class="profile-info d-flex justify-content-center align-items-md-center">
+                      <img *ngIf="preview == false && profile?.image == ''" class="rounded-circle img-lg" src="./assets/images/user.jpg" alt="profile image">
+                       <img *ngIf="preview == false && profile?.image != ''" class="rounded-circle img-lg" src="{{imageURL}}{{profile?.image}}" alt="profile image">
+                        <img *ngIf="preview == true" class="rounded-circle img-lg" src="{{imagePreview}}" alt="profile image">
+                      <input [(ngModel)]="image" style="display: none" type="file" (change)="onFileChanged($event,image)" #fileInput  name="file"
+               ngf-pattern="'image/*'"
+               accept="image/*"
+               ngf-max-size="200MB" id="input-file-now" class="dropify" style="display:none;" filepreview="filepreview" fileinput="file"  ngf-select>
+
+                     <!--  <input type="file"
+               ngf-select
+               ng-model="profile.logo"
+              /> -->
+           
+
+
+
+                      <button (click)="fileInput.click()">Select File</button>
+                      {{selectedFile}}
+                    </div>
+                  </div>
+                </div>
+                <div class="profile-body pt-0">
+                  <div class="row ">
+                    <div class="col-12 col-md-12">
+                      <div class="tab-content tab-body " id="profile-log-switch ">
+                        <div class="tab-pane fade show active " id="user-profile-info ">
+                          <table class="table table-borderless w-100">
+                            <tr>
+                              <td><strong>Name :</strong> {{profile?.firstname}} {{profile?.lastname}}</td>
+                            </tr>
+                            <tr>
+                              <td><strong>Email :</strong> {{profile?.email}}</td>
+                            </tr>
+                            <tr>
+                              <td><strong>Phone :</strong> {{profile?.contact}}</td>
+                            </tr>
+                            <tr>
+                              <td><strong>Location :</strong> {{profile?.address}}, {{profile?.city}}, {{profile?.country}}</td>
+                            </tr>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <ul class="nav nav-tabs tab-basic" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#whoweare" role="tab" aria-controls="whoweare" aria-selected="true">Profile Settings</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#ourgoal" role="tab" aria-controls="ourgoal" aria-selected="false">Password Settings</a>
+                  </li>
+                </ul>
+                <div class="tab-content tab-content-basic p-30-20">
+                  <div class="tab-pane fade show active " id="whoweare" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="row">
+                      <div class="col-12">
+                        <form [formGroup]="authForm" (ngSubmit)="updateProfile()">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">First Name</label>
+                                <input type="text" class="form-control" placeholder="Larry" formControlName="firstname" [ngClass]="(authForm.controls.firstname.hasError('required') && authForm.controls.firstname.touched )? 'has-error' : ''" >
+                                <span *ngIf="authForm.controls.firstname.hasError('required') && 		authForm.controls.firstname.touched">
+                    				<p style="color:#f70101 !important;">Sorry, field First Name is required!</p>
+                  				</span>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">Last Name</label>
+                                <input type="text" class="form-control" placeholder="Garne" formControlName="lastname" >
+                                <span *ngIf="authForm.controls.lastname.hasError('required') && 		authForm.controls.lastname.touched">
+                    				<p style="color:#f70101 !important;">Sorry, field Last Name is required!</p>
+                  				</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">Email Address</label>
+                                <input type="text" class="form-control" placeholder="larry@example.com" formControlName="email">
+                                <span *ngIf="authForm.controls.email.hasError('required') && 		authForm.controls.email.touched">
+                    				<p style="color:#f70101 !important;">Sorry, field Email is required!</p>
+                  				</span>
+                          <span *ngIf="authForm.controls.email.hasError('pattern') && authForm.controls.email.touched">
+                                <p style="color:#f70101 !important;">Please enter valid email</p>
+                            </span>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">Phone Number</label>
+                                <input type="number" class="form-control" placeholder="+1234 567 890" formControlName="contact" >
+                                <span *ngIf="authForm.controls.contact.hasError('required') && 		authForm.controls.contact.touched">
+                    				<p style="color:#f70101 !important;">Sorry, field Phone Number is required!</p>
+                  				</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">Address</label>
+                                <input type="text" class="form-control" placeholder="123 Demo Street" formControlName="address" >
+                                <span *ngIf="authForm.controls.address.hasError('required') && 		authForm.controls.address.touched">
+                    				<p style="color:#f70101 !important;">Sorry, field Address is required!</p>
+                  				</span>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">City</label>
+                                <input type="text" class="form-control" placeholder="California" formControlName="city" >
+                                <span *ngIf="authForm.controls.city.hasError('required') && 		authForm.controls.city.touched">
+                    				<p style="color:#f70101 !important;">Sorry, field City is required!</p>
+                  				</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">Country</label>
+                                <!-- <select class="form-control">
+												<option> Select One </option>
+												<option>India</option>
+												<option>Canada</option>
+												<option>USA</option>
+											</select> -->
+                                <input type="text" class="form-control" placeholder="Canada" formControlName="country" >
+                                <span *ngIf="authForm.controls.country.hasError('required') && 		authForm.controls.country.touched">
+                    				<p style="color:#f70101 !important;">Sorry, field Country is required!</p>
+                  				</span>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">Zip Code</label>
+                                <input type="text" class="form-control" placeholder="12345" formControlName="zipcode" >
+                                <span *ngIf="authForm.controls.zipcode.hasError('required') && 		authForm.controls.zipcode.touched">
+                    				<p style="color:#f70101 !important;">Sorry, field Zip Code is required!</p>
+                  				</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="sv-cncl-all">
+                            <button type="submit" [disabled]="!authForm.valid" class="btn btn-primary">Save</button>
+                            <button type="button" class="btn btn-danger">Cancel</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="ourgoal" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="row">
+                      <div class="col-12">
+                        <form [formGroup]="authForm1" (ngSubmit)="updatePassword()">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">Old Password</label>
+                                <input formControlName="password" type="password" class="form-control" placeholder="">
+                                 <span *ngIf="authForm1.controls.password.hasError('required') && 		authForm1.controls.password.touched">
+                    				<p style="color:#f70101 !important;">Sorry, field Password is required!</p>
+                  				</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">New Password</label>
+                                <input formControlName="newPassword" type="password" class="form-control" placeholder="">
+                                 <span *ngIf="authForm1.controls.newPassword.hasError('required') && 		authForm1.controls.newPassword.touched">
+                    				<p style="color:#f70101 !important;">Sorry, field New Password is required!</p>
+                  				</span>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">Confirm New Password</label>
+                                <input formControlName="confirmPassword" type="password" class="form-control" placeholder="">
+                                 <span *ngIf="authForm1.controls.confirmPassword.hasError('required') && authForm1.controls.confirmPassword.touched">
+                    				<p style="color:#f70101 !important;">Sorry, field Confirm Password is required!</p>
+                  				</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="sv-cncl-all">
+                            <button type="submit" [disabled]="!authForm1.valid" class="btn btn-primary">Save</button>
+                            <button type="button" class="btn btn-danger">Cancel</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--      <div class="sv-cncl-all">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-danger">Cancel</button>
+                  </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- partial:partials/_footer.html -->
+      <footer class="footer">
+        <div class="container-fluid clearfix">
+          <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018. All rights reserved.</span>
+          <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Designed By Indi IT Solutions.
+            
+            </span>
+        </div>
+      </footer>
+    </div>
+  </div>
